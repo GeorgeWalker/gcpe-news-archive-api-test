@@ -6,7 +6,6 @@
 
 namespace Gov.News.Archive.Api.Models
 {
-    using MongoDB.Bson;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -23,16 +22,17 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// Initializes a new instance of the Archive class.
         /// </summary>
-        public Archive(ObjectId id = default(ObjectId), ObjectId collectionId = default(ObjectId), Collection collection = default(Collection), string title = default(string), BsonDateTime dateReleased = default(BsonDateTime), string ministryText = default(string), string htmlContent = default(string), string textContent = default(string))
+        public Archive(string id = default(string), Collection collection = default(Collection), string title = default(string), System.DateTimeOffset? dateReleased = default(System.DateTimeOffset?), string ministryText = default(string), string htmlContent = default(string), string textContent = default(string), string preview = default(string), string body = default(string))
         {
             Id = id;
-            CollectionId = collectionId;
             Collection = collection;
             Title = title;
             DateReleased = dateReleased;
             MinistryText = ministryText;
             HtmlContent = htmlContent;
             TextContent = textContent;
+            Preview = preview;
+            Body = body;
             CustomInit();
         }
 
@@ -44,12 +44,7 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public ObjectId Id { get; private set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "collectionId")]
-        public ObjectId CollectionId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// </summary>
@@ -64,7 +59,7 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "dateReleased")]
-        public BsonDateTime DateReleased { get; set; }
+        public System.DateTimeOffset? DateReleased { get; set; }
 
         /// <summary>
         /// </summary>
@@ -80,6 +75,16 @@ namespace Gov.News.Archive.Api.Models
         /// </summary>
         [JsonProperty(PropertyName = "textContent")]
         public string TextContent { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "preview")]
+        public string Preview { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "body")]
+        public string Body { get; set; }
 
     }
 }

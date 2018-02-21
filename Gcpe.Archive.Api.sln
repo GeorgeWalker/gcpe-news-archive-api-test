@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gov.News.Archive.Api", "Gov.News.Archive.Api.csproj", "{FEA8C76A-52D8-4341-8409-CB8F971D44BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gov.News.Archive.Api", "Gov.News.Archive.Api\Gov.News.Archive.Api.csproj", "{FEA8C76A-52D8-4341-8409-CB8F971D44BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

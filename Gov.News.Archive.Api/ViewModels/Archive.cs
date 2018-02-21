@@ -39,6 +39,10 @@ namespace Gov.News.Archive.Api.ViewModels
         public string HtmlContent { get; set; }
 
         public string TextContent { get; set; }
+
+        public string Preview { get; set; }
+
+        public string Body { get; set; }
         
     }
 }

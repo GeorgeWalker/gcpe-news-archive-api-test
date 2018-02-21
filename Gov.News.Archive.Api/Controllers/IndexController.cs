@@ -14,14 +14,14 @@ namespace Gov.News.Archive.Api.Controllers
     public class IndexController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly DbAppContext db;
+        //private readonly DbAppContext db;
         private readonly string accessToken;
         private readonly string baseUri;
 
-        public IndexController(DbAppContext db, IConfiguration configuration)
+        public IndexController(IConfiguration configuration)
         {
             Configuration = configuration;
-            this.db = db;
+            //this.db = db;
             accessToken = Configuration["SearchService:AccessToken"];
             baseUri = Configuration["SearchService:BaseUri"];
         }
@@ -37,9 +37,9 @@ namespace Gov.News.Archive.Api.Controllers
         public bool IndexAdd(string indexName, ObjectId documentId)
         {
             bool result = false;
-            string connectionString = db.Database.GetDbConnection().ConnectionString;
-            var jobId = BackgroundJob.Enqueue(() => DocumentIndexUtils.ArchiveIndexDocumentJob(null, accessToken, baseUri, indexName, documentId, null));
-            result = (jobId != null);
+            //string connectionString = db.Database.GetDbConnection().ConnectionString;
+            //var jobId = BackgroundJob.Enqueue(() => DocumentIndexUtils.ArchiveIndexDocumentJob(null, accessToken, baseUri, indexName, documentId, null));
+            //result = (jobId != null);
             return result;
         }
         

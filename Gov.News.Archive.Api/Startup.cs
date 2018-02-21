@@ -18,11 +18,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Driver;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace Gov.News.Archive.Api
 {
@@ -50,28 +50,12 @@ namespace Gov.News.Archive.Api
                                  .RequireAuthenticatedUser()
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
+                config.Filters.Add(new CorsAuthorizationFilterFactory("AllowSpecificOrigin"));
             });
+            
 
-            // Other ConfigureServices() code...
-
-            var connectionString = "mongodb://test:test@localhost";
-            //optionsBuilder.UseMongoDb(connectionString);
-
-            var mongoUrl = new MongoUrl(connectionString);
-            //optionsBuilder.UseMongoDb(mongoUrl);
-
-            MongoClientSettings settings = MongoClientSettings.FromUrl(mongoUrl);
-            //settings.SslSettings = new SslSettings
-            //{
-            //    EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
-            //};
-            //optionsBuilder.UseMongoDb(settings);
-
-            MongoClient mongoClient = new MongoClient(settings);
-
-
-
-            services.AddDbContext<DbAppContext>(options => options.UseMongoDb(mongoClient));
+            // can't use entity framework
+            services.AddTransient<DataAccess>();
 
             services.AddSwaggerGen(c =>
             {
@@ -105,6 +89,13 @@ namespace Gov.News.Archive.Api
                 // enable console logs for jobs
                 config.UseConsole();
             });
+
+            services.AddCors(o => o.AddPolicy("AllowSpecificOrigin", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -159,6 +150,9 @@ namespace Gov.News.Archive.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "GCPE Hub Document Index Service");
             });
+            app.UseCors(builder =>
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+            );
         }
 
         

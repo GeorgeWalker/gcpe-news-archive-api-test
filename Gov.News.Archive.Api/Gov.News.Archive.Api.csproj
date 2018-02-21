@@ -11,15 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blueshift.EntityFrameworkCore.MongoDB" Version="2.1.0-preview1-t005b26807" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.6.17" />
     <PackageReference Include="Hangfire.Console" Version="1.3.10" />
     <PackageReference Include="Hangfire.MemoryStorage.Core" Version="1.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Cors" Version="2.0.2" />
     <PackageReference Include="Microsoft.Azure.Search" Version="3.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview2-30066" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0-preview2-30066" />
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.1.0" />
@@ -34,6 +32,8 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />	
+
   </ItemGroup>
 
   <ItemGroup>

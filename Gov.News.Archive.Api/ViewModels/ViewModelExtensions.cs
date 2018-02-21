@@ -23,6 +23,8 @@ namespace Gov.News.Archive.Api.Entity_Extensions
                 result.TextContent = model.TextContent;
                 result.MinistryText = model.MinistryText;
                 result.Title = model.Title;
+                result.Preview = model.Preview;
+                result.Body = model.Body;
             }
             return result; 
         }
@@ -56,6 +58,8 @@ namespace Gov.News.Archive.Api.Entity_Extensions
                 result.TextContent = viewModel.TextContent;
                 result.MinistryText = viewModel.MinistryText;
                 result.Title = viewModel.Title;
+                result.Preview = viewModel.Preview;
+                result.Body = viewModel.Body;
             }
             return result;
         }

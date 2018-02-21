@@ -40,9 +40,9 @@ namespace Gov.News.Archive.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<Archive>>> ApiArchivesGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> ApiArchivesGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
-        /// <param name='newArchive'>
+        /// <param name='data'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,18 +50,8 @@ namespace Gov.News.Archive.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Archive>> ApiArchivesPostWithHttpMessagesAsync(Archive newArchive = default(Archive), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> ApiArchivesPostWithHttpMessagesAsync(Archive data = default(Archive), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
-        /// <param name='timestamp'>
-        /// </param>
-        /// <param name='machine'>
-        /// </param>
-        /// <param name='pid'>
-        /// </param>
-        /// <param name='increment'>
-        /// </param>
-        /// <param name='creationTime'>
-        /// </param>
         /// <param name='archiveId'>
         /// </param>
         /// <param name='customHeaders'>
@@ -70,7 +60,7 @@ namespace Gov.News.Archive.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Archive>> ApiArchivesByArchiveIdGetWithHttpMessagesAsync(int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string archiveId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> ApiArchivesByArchiveIdGetWithHttpMessagesAsync(string archiveId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='secret'>
         /// </param>
@@ -88,18 +78,8 @@ namespace Gov.News.Archive.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<Collection>>> ApiCollectionsGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> ApiCollectionsGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
-        /// <param name='timestamp'>
-        /// </param>
-        /// <param name='machine'>
-        /// </param>
-        /// <param name='pid'>
-        /// </param>
-        /// <param name='increment'>
-        /// </param>
-        /// <param name='creationTime'>
-        /// </param>
         /// <param name='collectionId'>
         /// </param>
         /// <param name='customHeaders'>
@@ -108,7 +88,7 @@ namespace Gov.News.Archive.Api
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IList<Archive>>> ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string collectionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(string collectionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='indexName'>
         /// </param>

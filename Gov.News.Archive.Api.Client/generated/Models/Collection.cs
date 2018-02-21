@@ -6,7 +6,6 @@
 
 namespace Gov.News.Archive.Api.Models
 {
-    using MongoDB.Bson;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -23,7 +22,7 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// Initializes a new instance of the Collection class.
         /// </summary>
-        public Collection(ObjectId id = default(ObjectId), string name = default(string), BsonDateTime startDate = default(BsonDateTime), BsonDateTime endDate = default(BsonDateTime))
+        public Collection(string id = default(string), string name = default(string), System.DateTimeOffset? startDate = default(System.DateTimeOffset?), System.DateTimeOffset? endDate = default(System.DateTimeOffset?))
         {
             Id = id;
             Name = name;
@@ -40,7 +39,7 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// </summary>
@@ -50,12 +49,12 @@ namespace Gov.News.Archive.Api.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "startDate")]
-        public BsonDateTime StartDate { get; set; }
+        public System.DateTimeOffset? StartDate { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "endDate")]
-        public BsonDateTime EndDate { get; set; }
+        public System.DateTimeOffset? EndDate { get; set; }
 
     }
 }

@@ -7,8 +7,6 @@
 namespace Gov.News.Archive.Api
 {
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -20,9 +18,9 @@ namespace Gov.News.Archive.Api
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IList<Archive> ApiArchivesGet(this IClient operations)
+            public static void ApiArchivesGet(this IClient operations)
             {
-                return operations.ApiArchivesGetAsync().GetAwaiter().GetResult();
+                operations.ApiArchivesGetAsync().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -31,84 +29,55 @@ namespace Gov.News.Archive.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<Archive>> ApiArchivesGetAsync(this IClient operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ApiArchivesGetAsync(this IClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ApiArchivesGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.ApiArchivesGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='newArchive'>
+            /// <param name='data'>
             /// </param>
-            public static Archive ApiArchivesPost(this IClient operations, Archive newArchive = default(Archive))
+            public static void ApiArchivesPost(this IClient operations, Archive data = default(Archive))
             {
-                return operations.ApiArchivesPostAsync(newArchive).GetAwaiter().GetResult();
+                operations.ApiArchivesPostAsync(data).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='newArchive'>
+            /// <param name='data'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Archive> ApiArchivesPostAsync(this IClient operations, Archive newArchive = default(Archive), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ApiArchivesPostAsync(this IClient operations, Archive data = default(Archive), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ApiArchivesPostWithHttpMessagesAsync(newArchive, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.ApiArchivesPostWithHttpMessagesAsync(data, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='timestamp'>
-            /// </param>
-            /// <param name='machine'>
-            /// </param>
-            /// <param name='pid'>
-            /// </param>
-            /// <param name='increment'>
-            /// </param>
-            /// <param name='creationTime'>
             /// </param>
             /// <param name='archiveId'>
             /// </param>
-            public static Archive ApiArchivesByArchiveIdGet(this IClient operations, int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string archiveId)
+            public static void ApiArchivesByArchiveIdGet(this IClient operations, string archiveId)
             {
-                return operations.ApiArchivesByArchiveIdGetAsync(timestamp, machine, pid, increment, creationTime, archiveId).GetAwaiter().GetResult();
+                operations.ApiArchivesByArchiveIdGetAsync(archiveId).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='timestamp'>
-            /// </param>
-            /// <param name='machine'>
-            /// </param>
-            /// <param name='pid'>
-            /// </param>
-            /// <param name='increment'>
-            /// </param>
-            /// <param name='creationTime'>
             /// </param>
             /// <param name='archiveId'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Archive> ApiArchivesByArchiveIdGetAsync(this IClient operations, int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string archiveId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ApiArchivesByArchiveIdGetAsync(this IClient operations, string archiveId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ApiArchivesByArchiveIdGetWithHttpMessagesAsync(timestamp, machine, pid, increment, creationTime, archiveId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.ApiArchivesByArchiveIdGetWithHttpMessagesAsync(archiveId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <param name='operations'>
@@ -140,9 +109,9 @@ namespace Gov.News.Archive.Api
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IList<Collection> ApiCollectionsGet(this IClient operations)
+            public static void ApiCollectionsGet(this IClient operations)
             {
-                return operations.ApiCollectionsGetAsync().GetAwaiter().GetResult();
+                operations.ApiCollectionsGetAsync().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -151,58 +120,32 @@ namespace Gov.News.Archive.Api
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<Collection>> ApiCollectionsGetAsync(this IClient operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ApiCollectionsGetAsync(this IClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ApiCollectionsGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.ApiCollectionsGetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='timestamp'>
-            /// </param>
-            /// <param name='machine'>
-            /// </param>
-            /// <param name='pid'>
-            /// </param>
-            /// <param name='increment'>
-            /// </param>
-            /// <param name='creationTime'>
             /// </param>
             /// <param name='collectionId'>
             /// </param>
-            public static IList<Archive> ApiCollectionsByCollectionIdArchivesGet(this IClient operations, int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string collectionId)
+            public static void ApiCollectionsByCollectionIdArchivesGet(this IClient operations, string collectionId)
             {
-                return operations.ApiCollectionsByCollectionIdArchivesGetAsync(timestamp, machine, pid, increment, creationTime, collectionId).GetAwaiter().GetResult();
+                operations.ApiCollectionsByCollectionIdArchivesGetAsync(collectionId).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='timestamp'>
-            /// </param>
-            /// <param name='machine'>
-            /// </param>
-            /// <param name='pid'>
-            /// </param>
-            /// <param name='increment'>
-            /// </param>
-            /// <param name='creationTime'>
             /// </param>
             /// <param name='collectionId'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<Archive>> ApiCollectionsByCollectionIdArchivesGetAsync(this IClient operations, int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string collectionId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ApiCollectionsByCollectionIdArchivesGetAsync(this IClient operations, string collectionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(timestamp, machine, pid, increment, creationTime, collectionId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(collectionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <param name='operations'>

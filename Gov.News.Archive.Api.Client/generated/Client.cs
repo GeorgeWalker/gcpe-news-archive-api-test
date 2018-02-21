@@ -150,13 +150,10 @@ namespace Gov.News.Archive.Api
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<IList<Archive>>> ApiArchivesGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> ApiArchivesGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -230,27 +227,9 @@ namespace Gov.News.Archive.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<IList<Archive>>();
+            var _result = new HttpOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<IList<Archive>>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -258,7 +237,7 @@ namespace Gov.News.Archive.Api
             return _result;
         }
 
-        /// <param name='newArchive'>
+        /// <param name='data'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -269,13 +248,10 @@ namespace Gov.News.Archive.Api
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<Archive>> ApiArchivesPostWithHttpMessagesAsync(Archive newArchive = default(Archive), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> ApiArchivesPostWithHttpMessagesAsync(Archive data = default(Archive), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -284,7 +260,7 @@ namespace Gov.News.Archive.Api
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("newArchive", newArchive);
+                tracingParameters.Add("data", data);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ApiArchivesPost", tracingParameters);
             }
@@ -313,9 +289,9 @@ namespace Gov.News.Archive.Api
 
             // Serialize Request
             string _requestContent = null;
-            if(newArchive != null)
+            if(data != null)
             {
-                _requestContent = SafeJsonConvert.SerializeObject(newArchive, SerializationSettings);
+                _requestContent = SafeJsonConvert.SerializeObject(data, SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json-patch+json; charset=utf-8");
             }
@@ -356,27 +332,9 @@ namespace Gov.News.Archive.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<Archive>();
+            var _result = new HttpOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Archive>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -384,16 +342,6 @@ namespace Gov.News.Archive.Api
             return _result;
         }
 
-        /// <param name='timestamp'>
-        /// </param>
-        /// <param name='machine'>
-        /// </param>
-        /// <param name='pid'>
-        /// </param>
-        /// <param name='increment'>
-        /// </param>
-        /// <param name='creationTime'>
-        /// </param>
         /// <param name='archiveId'>
         /// </param>
         /// <param name='customHeaders'>
@@ -405,9 +353,6 @@ namespace Gov.News.Archive.Api
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -417,7 +362,7 @@ namespace Gov.News.Archive.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<Archive>> ApiArchivesByArchiveIdGetWithHttpMessagesAsync(int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string archiveId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> ApiArchivesByArchiveIdGetWithHttpMessagesAsync(string archiveId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (archiveId == null)
             {
@@ -430,11 +375,6 @@ namespace Gov.News.Archive.Api
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("timestamp", timestamp);
-                tracingParameters.Add("machine", machine);
-                tracingParameters.Add("pid", pid);
-                tracingParameters.Add("increment", increment);
-                tracingParameters.Add("creationTime", creationTime);
                 tracingParameters.Add("archiveId", archiveId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ApiArchivesByArchiveIdGet", tracingParameters);
@@ -442,11 +382,6 @@ namespace Gov.News.Archive.Api
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/archives/{archiveId}").ToString();
-            _url = _url.Replace("{Timestamp}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(timestamp, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Machine}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(machine, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Pid}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(pid, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Increment}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(increment, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{CreationTime}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(creationTime, SerializationSettings).Trim('"')));
             _url = _url.Replace("{archiveId}", System.Uri.EscapeDataString(archiveId));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -507,27 +442,9 @@ namespace Gov.News.Archive.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<Archive>();
+            var _result = new HttpOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Archive>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -673,13 +590,10 @@ namespace Gov.News.Archive.Api
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<IList<Collection>>> ApiCollectionsGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> ApiCollectionsGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -753,27 +667,9 @@ namespace Gov.News.Archive.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<IList<Collection>>();
+            var _result = new HttpOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<IList<Collection>>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -781,16 +677,6 @@ namespace Gov.News.Archive.Api
             return _result;
         }
 
-        /// <param name='timestamp'>
-        /// </param>
-        /// <param name='machine'>
-        /// </param>
-        /// <param name='pid'>
-        /// </param>
-        /// <param name='increment'>
-        /// </param>
-        /// <param name='creationTime'>
-        /// </param>
         /// <param name='collectionId'>
         /// </param>
         /// <param name='customHeaders'>
@@ -802,9 +688,6 @@ namespace Gov.News.Archive.Api
         /// <exception cref="HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -814,7 +697,7 @@ namespace Gov.News.Archive.Api
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<IList<Archive>>> ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(int timestamp, int machine, int pid, int increment, System.DateTimeOffset creationTime, string collectionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> ApiCollectionsByCollectionIdArchivesGetWithHttpMessagesAsync(string collectionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (collectionId == null)
             {
@@ -827,11 +710,6 @@ namespace Gov.News.Archive.Api
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("timestamp", timestamp);
-                tracingParameters.Add("machine", machine);
-                tracingParameters.Add("pid", pid);
-                tracingParameters.Add("increment", increment);
-                tracingParameters.Add("creationTime", creationTime);
                 tracingParameters.Add("collectionId", collectionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ApiCollectionsByCollectionIdArchivesGet", tracingParameters);
@@ -839,11 +717,6 @@ namespace Gov.News.Archive.Api
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/collections/{collectionId}/archives").ToString();
-            _url = _url.Replace("{Timestamp}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(timestamp, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Machine}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(machine, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Pid}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(pid, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{Increment}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(increment, SerializationSettings).Trim('"')));
-            _url = _url.Replace("{CreationTime}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(creationTime, SerializationSettings).Trim('"')));
             _url = _url.Replace("{collectionId}", System.Uri.EscapeDataString(collectionId));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -904,27 +777,9 @@ namespace Gov.News.Archive.Api
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<IList<Archive>>();
+            var _result = new HttpOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<IList<Archive>>(_responseContent, DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);

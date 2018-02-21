@@ -34,7 +34,7 @@ namespace Gov.News.Archive.Api
         public static string ContactIndexLockedSetting { get => contactIndexLockedSetting; set => contactIndexLockedSetting = value; }
         public static string ContactIndexLockedValue { get => contactIndexLockedValue; set => contactIndexLockedValue = value; }
         public static string ContactIndexUnlockedValue { get => contactIndexUnlockedValue; set => contactIndexUnlockedValue = value; }
-
+        /*
         public static DbContextOptions<DbAppContext> GetDbContextOptions(string connectionString)
         {
             // https://github.com/sergeyzwezdin/Hangfire.Mongo
@@ -46,7 +46,7 @@ namespace Gov.News.Archive.Api
             return options.Options;
         }
         
-
+    */
 
         /// <summary>
         /// Hangfire job to update a single document.
@@ -60,6 +60,7 @@ namespace Gov.News.Archive.Api
             // sanity check
             if (connectionString != null)
             {
+                /*
                 // make a database connection and see if there are any records that need to be updated.
                 using (var context = new DbAppContext(GetDbContextOptions(connectionString)))
                 {
@@ -89,6 +90,7 @@ namespace Gov.News.Archive.Api
                         hangfireContext.WriteLine("No data found for id " + id.ToString());
                     }
                 }
+                */
             }
             else
             {

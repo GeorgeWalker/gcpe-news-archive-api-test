@@ -59,6 +59,10 @@ namespace Gov.News.Archive.Api.Models
         public string HtmlContent { get; set; }
         [BsonElement("TextContent")]
         public string TextContent { get; set; }
+        [BsonElement("Preview")]
+        public string Preview { get; set; }
+        [BsonElement("Body")]
+        public string Body { get; set; }
         
     }
 }

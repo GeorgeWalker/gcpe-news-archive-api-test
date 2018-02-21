@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <!-- <Exec Command="npm install &amp;&amp; npm run generate" /> -->
+    <Exec Command="npm install &amp;&amp; npm run generate" /> 
   </Target>
 
 </Project>
