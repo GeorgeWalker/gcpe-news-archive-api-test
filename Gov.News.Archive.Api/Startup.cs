@@ -23,6 +23,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace Gov.News.Archive.Api
 {
@@ -96,6 +97,12 @@ namespace Gov.News.Archive.Api
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+
+            // In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -153,6 +160,22 @@ namespace Gov.News.Archive.Api
             app.UseCors(builder =>
                 builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
             );
+
+            app.UseSpaStaticFiles();
+
+            app.UseSpa(spa =>
+            {
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
+
         }
 
         

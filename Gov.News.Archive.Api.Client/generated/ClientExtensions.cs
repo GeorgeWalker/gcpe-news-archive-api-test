@@ -151,6 +151,29 @@ namespace Gov.News.Archive.Api
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='collectionId'>
+            /// </param>
+            public static void ApiCollectionsByCollectionIdGet(this IClient operations, string collectionId)
+            {
+                operations.ApiCollectionsByCollectionIdGetAsync(collectionId).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='collectionId'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task ApiCollectionsByCollectionIdGetAsync(this IClient operations, string collectionId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.ApiCollectionsByCollectionIdGetWithHttpMessagesAsync(collectionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
             /// <param name='indexName'>
             /// </param>
             /// <param name='timestamp'>

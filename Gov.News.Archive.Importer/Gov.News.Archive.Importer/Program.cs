@@ -110,14 +110,14 @@ namespace Gov.News.Archive.Importer
             c.EndDate = null;
             c.Name = "July 18, 2017 to current date";
 
-            //ImportDirectory(c, sourceDir, newsArchiveApiClient);
+            ImportDirectory(c, sourceDir, newsArchiveApiClient);
             c = new Api.Models.Collection();
             c.StartDate = DateTime.Parse("2017-06-12");
             c.EndDate = DateTime.Parse("2017-07-17");
             c.Name = "June 12, 2017 to July 17, 2017";
 
             sourceDir = "C:\\Projects\\GCPE\\News Archive files\\Web Site - Releases\\news_releases_2017-2017";
-            //ImportDirectory(c, sourceDir, newsArchiveApiClient);
+            ImportDirectory(c, sourceDir, newsArchiveApiClient);
 
             c = new Api.Models.Collection();
             c.StartDate = DateTime.Parse("2013-06-10");
@@ -125,7 +125,7 @@ namespace Gov.News.Archive.Importer
             c.Name = "June 10, 2013 to June 11, 2017";
 
             sourceDir = "C:\\Projects\\GCPE\\News Archive files\\Web Site - Releases\\news_releases_2013-2017";
-            ImportDirectory(c, sourceDir, newsArchiveApiClient);
+            //ImportDirectory(c, sourceDir, newsArchiveApiClient);
 
             c = new Api.Models.Collection();
             c.StartDate = DateTime.Parse("2011-06-11");
@@ -133,9 +133,8 @@ namespace Gov.News.Archive.Importer
             c.Name = "June 11, 2009 to June 9, 2013";
 
             sourceDir = "C:\\Projects\\GCPE\\News Archive files\\Web Site - Releases\\news_releases_2009-2013";
-            ImportDirectory(c, sourceDir, newsArchiveApiClient);
-
-
+            //ImportDirectory(c, sourceDir, newsArchiveApiClient);
+            
 
             Console.ReadLine();
 
